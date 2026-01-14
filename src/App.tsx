@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import ScrollLines from "./components/ScrollLines";
 import Index from "./pages/Index";
 import VideoPage from "./pages/VideoPage";
 import PhotoPage from "./pages/PhotoPage";
@@ -18,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollLines />
         <Navigation />
         <Routes>
           <Route path="/" element={<Index />} />
