@@ -3,14 +3,11 @@ import { motion } from 'motion/react';
 import BlurText from '@/components/BlurText';
 
 const VideoPage = () => {
-  // Placeholder video URLs - replace with actual videos
   const verticalVideos = [
-    'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=400&h=700&fit=crop',
-    'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&h=700&fit=crop',
-    'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=700&fit=crop',
+    '/videos/vertical-1.mp4',
+    '/videos/vertical-2.mp4',
+    '/videos/vertical-3.mp4',
   ];
-
-  const horizontalVideo = 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1200&h=675&fit=crop';
 
   return (
     <main className="pt-24 pb-16">
@@ -59,9 +56,12 @@ const VideoPage = () => {
               className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.4 + index * 0.1}s` }}
             >
-              <img
+              <video
                 src={video}
-                alt={`AI Видео ${index + 1}`}
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>
