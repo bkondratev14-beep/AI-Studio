@@ -21,138 +21,59 @@ const WaveBackground = () => {
     resize();
     window.addEventListener('resize', resize);
 
-    // Flowing curves data
-    const curves: Array<{
-      startX: number;
-      startY: number;
-      controlPoints: Array<{ x: number; y: number }>;
-      speed: number;
-      phase: number;
-      intensity: number;
-    }> = [];
+    const drawWave = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Initialize curves
-    for (let i = 0; i < 6; i++) {
-      curves.push({
-        startX: Math.random() * canvas.width,
-        startY: Math.random() * canvas.height,
-        controlPoints: Array.from({ length: 4 }, () => ({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-        })),
-        speed: 0.0003 + Math.random() * 0.0005,
-        phase: Math.random() * Math.PI * 2,
-        intensity: 0.3 + Math.random() * 0.7,
-      });
-    }
+      const centerY = canvas.height * 0.6;
+      const waveCount = 8;
 
-    const drawGlowingCurve = (
-      points: { x: number; y: number }[],
-      intensity: number,
-      time: number
-    ) => {
-      if (points.length < 2) return;
-
-      // Draw multiple layers for glow effect
-      const layers = [
-        { blur: 80, alpha: 0.05 * intensity },
-        { blur: 50, alpha: 0.1 * intensity },
-        { blur: 30, alpha: 0.15 * intensity },
-        { blur: 15, alpha: 0.25 * intensity },
-        { blur: 5, alpha: 0.4 * intensity },
-        { blur: 0, alpha: 0.8 * intensity },
-      ];
-
-      layers.forEach(({ blur, alpha }) => {
-        ctx.save();
-        ctx.filter = blur > 0 ? `blur(${blur}px)` : 'none';
+      for (let w = 0; w < waveCount; w++) {
         ctx.beginPath();
-        ctx.moveTo(points[0].x, points[0].y);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.03 + w * 0.015})`;
+        ctx.lineWidth = 1;
 
-        // Draw smooth bezier curves through points
-        for (let i = 1; i < points.length - 2; i++) {
-          const xc = (points[i].x + points[i + 1].x) / 2;
-          const yc = (points[i].y + points[i + 1].y) / 2;
-          ctx.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
+        for (let x = 0; x <= canvas.width; x += 2) {
+          const frequency = 0.002 + w * 0.0003;
+          const amplitude = 30 + w * 15;
+          const speed = 0.0005 + w * 0.0001;
+          const offset = w * 20;
+
+          const y = centerY + offset +
+            Math.sin(x * frequency + time * speed) * amplitude +
+            Math.sin(x * frequency * 1.5 + time * speed * 0.7) * (amplitude * 0.5) +
+            Math.sin(x * frequency * 0.5 + time * speed * 1.3) * (amplitude * 0.3);
+
+          if (x === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
         }
 
-        if (points.length > 2) {
-          ctx.quadraticCurveTo(
-            points[points.length - 2].x,
-            points[points.length - 2].y,
-            points[points.length - 1].x,
-            points[points.length - 1].y
-          );
-        }
-
-        // Orange gradient for the stroke
-        const gradient = ctx.createLinearGradient(
-          points[0].x,
-          points[0].y,
-          points[points.length - 1].x,
-          points[points.length - 1].y
-        );
-        
-        const hue = 25 + Math.sin(time * 0.001) * 10;
-        gradient.addColorStop(0, `hsla(${hue}, 95%, 55%, ${alpha})`);
-        gradient.addColorStop(0.5, `hsla(${hue + 5}, 90%, 60%, ${alpha * 1.2})`);
-        gradient.addColorStop(1, `hsla(${hue - 5}, 95%, 50%, ${alpha * 0.8})`);
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = blur > 30 ? 40 : blur > 10 ? 20 : 8;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
         ctx.stroke();
-        ctx.restore();
-      });
-    };
+      }
 
-    const animate = () => {
-      // Fade effect for trails
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.15)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      curves.forEach((curve) => {
-        // Animate control points
-        const animatedPoints = [
-          {
-            x: curve.startX + Math.sin(time * curve.speed + curve.phase) * 200,
-            y: curve.startY + Math.cos(time * curve.speed * 0.7 + curve.phase) * 150,
-          },
-          ...curve.controlPoints.map((point, i) => ({
-            x: point.x + Math.sin(time * curve.speed * (0.5 + i * 0.2) + curve.phase + i) * 180,
-            y: point.y + Math.cos(time * curve.speed * (0.6 + i * 0.15) + curve.phase + i * 0.5) * 180,
-          })),
-        ];
-
-        drawGlowingCurve(animatedPoints, curve.intensity, time);
-      });
-
-      // Add central glow
-      const centerGradient = ctx.createRadialGradient(
+      // Glow effect at center
+      const gradient = ctx.createRadialGradient(
         canvas.width / 2,
-        canvas.height / 2,
+        centerY,
         0,
         canvas.width / 2,
-        canvas.height / 2,
-        canvas.width * 0.5
+        centerY,
+        canvas.width * 0.4
       );
-      centerGradient.addColorStop(0, 'hsla(30, 95%, 50%, 0.08)');
-      centerGradient.addColorStop(0.3, 'hsla(25, 90%, 45%, 0.04)');
-      centerGradient.addColorStop(1, 'transparent');
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.08)');
+      gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.02)');
+      gradient.addColorStop(1, 'transparent');
 
-      ctx.fillStyle = centerGradient;
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       time++;
-      animationId = requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(drawWave);
     };
 
-    // Initial clear
-    ctx.fillStyle = 'hsl(0, 0%, 4%)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    animate();
+    drawWave();
 
     return () => {
       window.removeEventListener('resize', resize);
