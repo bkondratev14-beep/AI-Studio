@@ -99,7 +99,7 @@ const OrderPage = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="captcha" className="text-sm md:text-base">8 + 8 = ?</Label>
+            <Label htmlFor="captcha" className="text-base md:text-lg">8 + 8 = ?</Label>
             <Input
               id="captcha"
               placeholder="Ответ"
