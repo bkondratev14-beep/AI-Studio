@@ -17,8 +17,9 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-semibold tracking-tight">
-            AI Studio
+          <Link to="/" className="flex items-baseline gap-2">
+            <span className="text-xl font-semibold tracking-tight">AI Studio</span>
+            <span className="text-xs text-muted-foreground">by David.Korolev</span>
           </Link>
 
           {/* Desktop Navigation */}
