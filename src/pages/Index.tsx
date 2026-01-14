@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import WaveBackground from '@/components/WaveBackground';
+import LiquidEther from '@/components/LiquidEther';
 import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -10,7 +10,15 @@ const Index = () => {
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <WaveBackground />
+        <div className="absolute inset-0">
+          <LiquidEther
+            colors={['#db7706', '#b1aab1', '#db7706']}
+            mouseForce={28}
+            autoDemo={true}
+            autoSpeed={0.5}
+            autoIntensity={2.2}
+          />
+        </div>
         
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 
