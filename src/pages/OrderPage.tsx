@@ -84,7 +84,7 @@ const OrderPage = () => {
       <div className="absolute inset-0 z-0">
         <RippleGrid
           enableRainbow={false}
-          gridColor="#ffffff"
+          gridColor="#FF6900"
           rippleIntensity={0.05}
           gridSize={10}
           gridThickness={15}
