@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -34,18 +35,47 @@ const OrderPage = () => {
   if (isSubmitted) {
     return (
       <main className="pt-24 pb-16 min-h-screen flex items-center justify-center">
-        <div className="text-center opacity-0 animate-fade-in">
-          <CheckCircle className="w-16 h-16 text-primary mx-auto mb-6" />
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Заявка отправлена
-          </h2>
-          <p className="text-muted-foreground">
-            Мы свяжемся с вами в ближайшее время
-          </p>
+        <div className="text-center">
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <CheckCircle className="w-16 h-16 text-primary mx-auto mb-6" />
+          </motion.div>
+          <BlurText
+            text="Заявка отправлена"
+            delay={80}
+            animateBy="words"
+            direction="top"
+            className="text-2xl md:text-3xl font-bold mb-4 justify-center"
+          />
+          <BlurText
+            text="Мы свяжемся с вами в ближайшее время"
+            delay={60}
+            animateBy="words"
+            direction="top"
+            stepDuration={0.3}
+            className="text-muted-foreground justify-center"
+          />
         </div>
       </main>
     );
   }
+
+  const formItemVariants = {
+    hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      transition: {
+        delay: 0.3 + i * 0.1,
+        duration: 0.5,
+        ease: [0.25, 0.46, 0.45, 0.94] as const
+      }
+    })
+  };
 
   return (
     <main className="pt-20 md:pt-24 pb-12 md:pb-16 min-h-screen">
@@ -57,16 +87,26 @@ const OrderPage = () => {
           direction="top"
           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-center justify-center"
         />
-        <p className="text-sm md:text-base text-muted-foreground text-center mb-8 md:mb-16 opacity-0 animate-fade-in px-2" style={{ animationDelay: '0.1s' }}>
-          Расскажите о вашей идее — мы воплотим её в жизнь
-        </p>
+        <BlurText
+          text="Расскажите о вашей идее — мы воплотим её в жизнь"
+          delay={50}
+          animateBy="words"
+          direction="top"
+          stepDuration={0.3}
+          className="text-sm md:text-base text-muted-foreground text-center mb-8 md:mb-16 px-2 justify-center"
+        />
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-lg mx-auto space-y-4 md:space-y-6 opacity-0 animate-fade-in"
-          style={{ animationDelay: '0.2s' }}
+          className="max-w-lg mx-auto space-y-4 md:space-y-6"
         >
-          <div className="space-y-2">
+          <motion.div
+            className="space-y-2"
+            variants={formItemVariants}
+            initial="hidden"
+            animate="visible"
+            custom={0}
+          >
             <Label htmlFor="name" className="text-sm md:text-base">Имя</Label>
             <Input
               id="name"
@@ -76,9 +116,15 @@ const OrderPage = () => {
               required
               className="bg-card border-border text-base"
             />
-          </div>
+          </motion.div>
 
-          <div className="space-y-2">
+          <motion.div
+            className="space-y-2"
+            variants={formItemVariants}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+          >
             <Label htmlFor="contact" className="text-sm md:text-base">Телефон или Telegram</Label>
             <Input
               id="contact"
@@ -88,9 +134,15 @@ const OrderPage = () => {
               required
               className="bg-card border-border text-base"
             />
-          </div>
+          </motion.div>
 
-          <div className="space-y-2">
+          <motion.div
+            className="space-y-2"
+            variants={formItemVariants}
+            initial="hidden"
+            animate="visible"
+            custom={2}
+          >
             <Label htmlFor="description" className="text-sm md:text-base">Краткое описание задачи</Label>
             <Textarea
               id="description"
@@ -101,9 +153,15 @@ const OrderPage = () => {
               rows={4}
               className="bg-card border-border resize-none text-base"
             />
-          </div>
+          </motion.div>
 
-          <div className="space-y-2">
+          <motion.div
+            className="space-y-2"
+            variants={formItemVariants}
+            initial="hidden"
+            animate="visible"
+            custom={3}
+          >
             <Label htmlFor="captcha" className="text-base md:text-lg">8 + 8 = ?</Label>
             <Input
               id="captcha"
@@ -116,11 +174,18 @@ const OrderPage = () => {
             {error && (
               <p className="text-destructive text-xs md:text-sm">{error}</p>
             )}
-          </div>
+          </motion.div>
 
-          <Button type="submit" variant="hero" className="w-full text-sm md:text-base py-5 md:py-6">
-            Отправить заявку
-          </Button>
+          <motion.div
+            variants={formItemVariants}
+            initial="hidden"
+            animate="visible"
+            custom={4}
+          >
+            <Button type="submit" variant="hero" className="w-full text-sm md:text-base py-5 md:py-6">
+              Отправить заявку
+            </Button>
+          </motion.div>
         </form>
       </div>
     </main>
