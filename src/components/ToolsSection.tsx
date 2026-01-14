@@ -5,8 +5,10 @@ const ToolsSection = () => {
   ];
 
   const proTools = [
-    'Adobe Photoshop', 'Adobe Premiere Pro',
-    'Adobe After Effects', 'Adobe Lightroom'
+    { name: 'Adobe Photoshop', abbr: 'Ps', color: '#31A8FF' },
+    { name: 'Adobe Premiere Pro', abbr: 'Pr', color: '#9999FF' },
+    { name: 'Adobe After Effects', abbr: 'Ae', color: '#9999FF' },
+    { name: 'Adobe Lightroom', abbr: 'Lr', color: '#31A8FF' }
   ];
 
   return (
@@ -42,10 +44,16 @@ const ToolsSection = () => {
             <div className="flex flex-wrap gap-3">
               {proTools.map((tool) => (
                 <span
-                  key={tool}
-                  className="px-4 py-2 rounded-full border border-border bg-card text-sm font-medium hover:border-primary/50 transition-colors"
+                  key={tool.name}
+                  className="px-4 py-2 rounded-full border border-border bg-card text-sm font-medium hover:border-primary/50 transition-colors flex items-center gap-2"
                 >
-                  {tool}
+                  <span 
+                    className="w-6 h-6 rounded text-xs font-bold flex items-center justify-center text-black"
+                    style={{ backgroundColor: tool.color }}
+                  >
+                    {tool.abbr}
+                  </span>
+                  {tool.name}
                 </span>
               ))}
             </div>
