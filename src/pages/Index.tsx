@@ -5,6 +5,7 @@ import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useIsMobile } from '@/hooks/use-mobile';
+import davidPhoto from '@/assets/david-korolev.png';
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -66,7 +67,7 @@ const Index = () => {
               <TeamCard
                 name="Давид Королев"
                 description="AI-креатор с более чем 8-летним опытом в видеопродакшене. Работал монтажёром, видеооператором, сценаристом и VFX-артистом. Сегодня объединяю весь этот опыт в одной профессии — AI-креатор, создавая визуал нового поколения."
-                imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                imageUrl={davidPhoto}
               />
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
