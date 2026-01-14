@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { CheckCircle } from 'lucide-react';
 import BlurText from '@/components/BlurText';
+import RippleGrid from '@/components/RippleGrid';
 
 const OrderPage = () => {
   const [formData, setFormData] = useState({
@@ -78,8 +79,22 @@ const OrderPage = () => {
   };
 
   return (
-    <main className="pt-20 md:pt-24 pb-12 md:pb-16 min-h-screen">
-      <div className="container mx-auto px-4 md:px-6">
+    <main className="pt-20 md:pt-24 pb-12 md:pb-16 min-h-screen relative overflow-hidden">
+      {/* Background Effect */}
+      <div className="absolute inset-0 z-0">
+        <RippleGrid
+          enableRainbow={false}
+          gridColor="#ffffff"
+          rippleIntensity={0.05}
+          gridSize={10}
+          gridThickness={15}
+          mouseInteraction={true}
+          mouseInteractionRadius={1.2}
+          opacity={0.3}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <BlurText
           text="Заказать"
           delay={100}
