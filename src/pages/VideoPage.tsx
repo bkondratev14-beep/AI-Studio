@@ -184,6 +184,9 @@ const VideoPage = () => {
                   autoPlay
                   controls
                   playsInline
+                  controlsList="nodownload nofullscreen noremoteplayback"
+                  disablePictureInPicture
+                  onContextMenu={(e) => e.preventDefault()}
                   className="w-full h-full object-contain"
                 />
               </div>
