@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import WaveBackground from '@/components/WaveBackground';
+import ShaderBackground from '@/components/ShaderBackground';
 import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -10,7 +10,7 @@ const Index = () => {
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <WaveBackground />
+        <ShaderBackground />
         
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 
