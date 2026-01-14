@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { motion } from 'motion/react';
 import BlurText from '@/components/BlurText';
 
 const PhotoPage = () => {
@@ -57,14 +58,29 @@ const PhotoPage = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
           >
-            <BlurText
-              text="Все работы"
-              delay={100}
-              animateBy="words"
-              direction="top"
-              className="border-b border-muted-foreground/30 group-hover:border-primary transition-colors"
-            />
-            <ExternalLink className="w-4 h-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }} />
+            <span className="relative">
+              <BlurText
+                text="Все работы"
+                delay={100}
+                animateBy="words"
+                direction="top"
+                className=""
+              />
+              <motion.span 
+                className="absolute bottom-0 left-0 w-full h-px bg-muted-foreground/30 group-hover:bg-primary transition-colors"
+                initial={{ scaleX: 0, opacity: 0, filter: 'blur(4px)' }}
+                animate={{ scaleX: 1, opacity: 1, filter: 'blur(0px)' }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                style={{ originX: 0 }}
+              />
+            </span>
+            <motion.span
+              initial={{ opacity: 0, filter: 'blur(10px)', y: -10 }}
+              animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+              transition={{ delay: 0.5, duration: 0.35 }}
+            >
+              <ExternalLink className="w-4 h-4" />
+            </motion.span>
           </a>
         </div>
       </div>
