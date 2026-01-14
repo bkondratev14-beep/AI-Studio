@@ -66,17 +66,21 @@ const VideoPage = () => {
         </div>
 
         {/* External Link */}
-        <div className="text-center opacity-0 animate-fade-in" style={{ animationDelay: '0.7s' }}>
+        <div className="text-center">
           <a
             href="https://disk.yandex.ru/d/Fo4qI2QORRGvHw"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
           >
-            <span className="border-b border-muted-foreground/30 group-hover:border-primary transition-colors">
-              Все работы
-            </span>
-            <ExternalLink className="w-4 h-4" />
+            <BlurText
+              text="Все работы"
+              delay={100}
+              animateBy="words"
+              direction="top"
+              className="border-b border-muted-foreground/30 group-hover:border-primary transition-colors"
+            />
+            <ExternalLink className="w-4 h-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }} />
           </a>
         </div>
       </div>
