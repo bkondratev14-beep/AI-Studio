@@ -68,13 +68,13 @@ const VideoPage = () => {
         {/* External Link */}
         <div className="text-center opacity-0 animate-fade-in" style={{ animationDelay: '0.7s' }}>
           <a
-            href="https://disk.yandex.ru"
+            href="https://disk.yandex.ru/d/Fo4qI2QORRGvHw"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
           >
-            <span className="border-b border-muted-foreground/30 group-hover:border-foreground/50 transition-colors">
-              Смотреть все работы на Яндекс.Диске
+            <span className="border-b border-muted-foreground/30 group-hover:border-primary transition-colors">
+              Все работы
             </span>
             <ExternalLink className="w-4 h-4" />
           </a>
