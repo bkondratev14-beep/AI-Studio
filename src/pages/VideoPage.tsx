@@ -1,4 +1,5 @@
 import { ExternalLink } from 'lucide-react';
+import BlurText from '@/components/BlurText';
 
 const VideoPage = () => {
   // Placeholder video URLs - replace with actual videos
@@ -13,9 +14,13 @@ const VideoPage = () => {
   return (
     <main className="pt-24 pb-16">
       <div className="container mx-auto px-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-16 text-center opacity-0 animate-fade-in">
-          AI Видео
-        </h1>
+        <BlurText
+          text="AI Видео"
+          delay={100}
+          animateBy="words"
+          direction="top"
+          className="text-4xl md:text-5xl font-bold mb-16 text-center"
+        />
 
         {/* Main Showreel - Vertical */}
         <div className="max-w-md mx-auto mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
