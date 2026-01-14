@@ -85,12 +85,13 @@ const OrderPage = () => {
         <RippleGrid
           enableRainbow={false}
           gridColor="#FF6900"
-          rippleIntensity={0.05}
+          rippleIntensity={0.08}
           gridSize={10}
-          gridThickness={15}
+          gridThickness={12}
+          glowIntensity={0.4}
           mouseInteraction={true}
-          mouseInteractionRadius={1.2}
-          opacity={0.3}
+          mouseInteractionRadius={1.5}
+          opacity={0.5}
         />
       </div>
 
