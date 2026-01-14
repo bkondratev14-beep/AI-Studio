@@ -40,9 +40,12 @@ const VideoPage = () => {
         {/* Horizontal Video */}
         <div className="mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <div className="aspect-video rounded-2xl overflow-hidden bg-card border border-border">
-            <img
-              src={horizontalVideo}
-              alt="AI Видео работа"
+            <video
+              src="/videos/cyberpunk-ring.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
             />
           </div>
