@@ -70,6 +70,7 @@ const Index = () => {
                 description="AI-креатор с более чем 8-летним опытом в видеопродакшене. Работал монтажёром, видеооператором, сценаристом и VFX-артистом. Сегодня объединяю весь этот опыт в одной профессии — AI-креатор."
                 imageUrl={davidPhoto}
                 imagePosition="center 20%"
+                instagramUrl="https://www.instagram.com/david.korolev/"
               />
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
@@ -78,6 +79,7 @@ const Index = () => {
                 description="Фотограф с 2022 года. Прошла весь путь создания продающего визуала для товаров — от предметной съёмки с реальным реквизитом до полностью AI-сгенерированных сцен. Сегодня любой объект, фон или идея создаются с помощью точного промпта."
                 imageUrl={polinaPhoto}
                 imagePosition="right 15%"
+                instagramUrl="https://www.instagram.com/landyshevapolina/"
               />
             </ScrollReveal>
           </div>
