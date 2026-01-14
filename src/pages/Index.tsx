@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { FallingPattern } from '@/components/ui/falling-pattern';
+import WaveBackground from '@/components/WaveBackground';
 import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
 
@@ -9,7 +9,7 @@ const Index = () => {
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <FallingPattern color="rgba(255, 255, 255, 0.15)" duration={120} blurIntensity="0.5em" />
+        <WaveBackground />
         
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 
