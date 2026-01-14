@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ExternalLink } from 'lucide-react';
 import BlurText from '@/components/BlurText';
 
 const PhotoPage = () => {
@@ -46,6 +47,21 @@ const PhotoPage = () => {
               />
             </div>
           ))}
+        </div>
+
+        {/* External Link */}
+        <div className="text-center mt-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+          <a
+            href="https://i0z38d3vsvb4.wfolio.pro/disk/ai-portfolio-9fn1bz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+          >
+            <span className="border-b border-muted-foreground/30 group-hover:border-primary transition-colors">
+              Все работы
+            </span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
       </div>
 
