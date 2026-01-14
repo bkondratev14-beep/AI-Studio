@@ -4,8 +4,11 @@ import LiquidEther from '@/components/LiquidEther';
 import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
 import ScrollReveal from '@/components/ScrollReveal';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
+  const isMobile = useIsMobile();
+
   return (
     <main>
       {/* Hero Section */}
@@ -13,10 +16,13 @@ const Index = () => {
         <div className="absolute inset-0">
           <LiquidEther
             colors={['#db7706', '#b1aab1', '#db7706']}
-            mouseForce={28}
+            mouseForce={isMobile ? 20 : 28}
             autoDemo={true}
-            autoSpeed={0.5}
-            autoIntensity={2.2}
+            autoSpeed={isMobile ? 0.3 : 0.5}
+            autoIntensity={isMobile ? 1.5 : 2.2}
+            resolution={isMobile ? 0.3 : 0.5}
+            iterationsPoisson={isMobile ? 16 : 32}
+            iterationsViscous={isMobile ? 16 : 32}
           />
         </div>
         
