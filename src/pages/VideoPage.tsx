@@ -24,7 +24,7 @@ const VideoPage = () => {
         />
 
         {/* Main Showreel - Vertical */}
-        <div className="max-w-md mx-auto mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <div className="max-w-md mx-auto mb-12 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border relative">
             <video
               src="/videos/showreel.mp4"
@@ -35,7 +35,6 @@ const VideoPage = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-center text-muted-foreground mt-4">Шоурил со всеми работами</p>
         </div>
 
         {/* Horizontal Video */}
