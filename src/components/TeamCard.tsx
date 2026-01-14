@@ -2,9 +2,10 @@ interface TeamCardProps {
   name: string;
   description: string;
   imageUrl: string;
+  imagePosition?: string;
 }
 
-const TeamCard = ({ name, description, imageUrl }: TeamCardProps) => {
+const TeamCard = ({ name, description, imageUrl, imagePosition = 'center' }: TeamCardProps) => {
   return (
     <div className="card-hover group rounded-2xl border border-border bg-card p-6 md:p-8">
       <div className="flex flex-col md:flex-row gap-6 md:gap-8">
@@ -13,6 +14,7 @@ const TeamCard = ({ name, description, imageUrl }: TeamCardProps) => {
             src={imageUrl}
             alt={name}
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            style={{ objectPosition: imagePosition }}
           />
         </div>
         <div className="flex-1">
