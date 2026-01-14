@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { CheckCircle } from 'lucide-react';
+import BlurText from '@/components/BlurText';
 
 const OrderPage = () => {
   const [formData, setFormData] = useState({
@@ -49,9 +50,13 @@ const OrderPage = () => {
   return (
     <main className="pt-20 md:pt-24 pb-12 md:pb-16 min-h-screen">
       <div className="container mx-auto px-4 md:px-6">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-center opacity-0 animate-fade-in">
-          Заказать
-        </h1>
+        <BlurText
+          text="Заказать"
+          delay={100}
+          animateBy="words"
+          direction="top"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-center justify-center"
+        />
         <p className="text-sm md:text-base text-muted-foreground text-center mb-8 md:mb-16 opacity-0 animate-fade-in px-2" style={{ animationDelay: '0.1s' }}>
           Расскажите о вашей идее — мы воплотим её в жизнь
         </p>
