@@ -1,16 +1,23 @@
 import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import { Button } from '@/components/ui/button';
-import WaveBackground from '@/components/WaveBackground';
 import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
 import ScrollReveal from '@/components/ScrollReveal';
+
+const Spline = lazy(() => import('@splinetool/react-spline'));
 
 const Index = () => {
   return (
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <WaveBackground />
+        {/* Spline 3D Background */}
+        <div className="absolute inset-0 z-0">
+          <Suspense fallback={<div className="w-full h-full bg-background" />}>
+            <Spline scene="https://prod.spline.design/BnR0cAc7JJcCEMMu/scene.splinecode" />
+          </Suspense>
+        </div>
         
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 
