@@ -15,7 +15,7 @@ const Index = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <LiquidEther
-            colors={['#db7706', '#b1aab1', '#db7706']}
+            colors={['#FF6900', '#b1aab1', '#FF6900']}
             mouseForce={isMobile ? 20 : 28}
             autoDemo={true}
             autoSpeed={isMobile ? 0.3 : 0.5}
