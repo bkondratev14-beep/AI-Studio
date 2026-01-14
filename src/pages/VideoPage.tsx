@@ -1,0 +1,84 @@
+import { ExternalLink } from 'lucide-react';
+
+const VideoPage = () => {
+  // Placeholder video URLs - replace with actual videos
+  const verticalVideos = [
+    'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=400&h=700&fit=crop',
+    'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&h=700&fit=crop',
+    'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=700&fit=crop',
+  ];
+
+  const horizontalVideo = 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1200&h=675&fit=crop';
+
+  return (
+    <main className="pt-24 pb-16">
+      <div className="container mx-auto px-6">
+        <h1 className="text-4xl md:text-5xl font-bold mb-16 text-center opacity-0 animate-fade-in">
+          AI Видео
+        </h1>
+
+        {/* Main Showreel - Vertical */}
+        <div className="max-w-md mx-auto mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border">
+            <img
+              src={verticalVideos[0]}
+              alt="Шоурил"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center">
+                <div className="w-0 h-0 border-l-[20px] border-l-foreground border-y-[12px] border-y-transparent ml-1" />
+              </div>
+            </div>
+          </div>
+          <p className="text-center text-muted-foreground mt-4">Шоурил со всеми работами</p>
+        </div>
+
+        {/* Horizontal Video */}
+        <div className="mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="aspect-video rounded-2xl overflow-hidden bg-card border border-border">
+            <img
+              src={horizontalVideo}
+              alt="AI Видео работа"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Vertical Videos Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {verticalVideos.map((video, index) => (
+            <div
+              key={index}
+              className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border opacity-0 animate-fade-in"
+              style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+            >
+              <img
+                src={video}
+                alt={`AI Видео ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* External Link */}
+        <div className="text-center opacity-0 animate-fade-in" style={{ animationDelay: '0.7s' }}>
+          <a
+            href="https://disk.yandex.ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
+          >
+            <span className="border-b border-muted-foreground/30 group-hover:border-foreground/50 transition-colors">
+              Смотреть все работы на Яндекс.Диске
+            </span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default VideoPage;
