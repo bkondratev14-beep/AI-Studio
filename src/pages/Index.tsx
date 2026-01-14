@@ -6,6 +6,7 @@ import ToolsSection from '@/components/ToolsSection';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useIsMobile } from '@/hooks/use-mobile';
 import davidPhoto from '@/assets/david-korolev.png';
+import polinaPhoto from '@/assets/polina-landysheva.jpg';
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -75,7 +76,8 @@ const Index = () => {
               <TeamCard
                 name="Полина Ландышева"
                 description="Фотограф с 2022 года. Прошла весь путь создания продающего визуала для товаров — от предметной съёмки с реальным реквизитом до полностью AI-сгенерированных сцен. Сегодня любой объект, фон или идея создаются с помощью точного промпта."
-                imageUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face"
+                imageUrl={polinaPhoto}
+                imagePosition="right 15%"
               />
             </ScrollReveal>
           </div>
