@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import WaveBackground from '@/components/WaveBackground';
 import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const Index = () => {
   return (
@@ -40,21 +41,27 @@ const Index = () => {
       {/* Team Section */}
       <section className="py-24 md:py-32 bg-background">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
-            Команда
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
+              Команда
+            </h2>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <TeamCard
-              name="Давид Королев"
-              description="AI-креатор с более чем 8-летним опытом в видеопродакшене. Работал монтажёром, видеооператором, сценаристом и VFX-артистом. Сегодня объединяю весь этот опыт в одной профессии — AI-креатор, создавая визуал нового поколения."
-              imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-            />
-            <TeamCard
-              name="Полина Ландышева"
-              description="Фотограф с 2022 года. Прошла весь путь создания продающего визуала для товаров — от предметной съёмки с реальным реквизитом до полностью AI-сгенерированных сцен. Сегодня любой объект, фон или идея создаются с помощью точного промпта."
-              imageUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face"
-            />
+            <ScrollReveal delay={0.1}>
+              <TeamCard
+                name="Давид Королев"
+                description="AI-креатор с более чем 8-летним опытом в видеопродакшене. Работал монтажёром, видеооператором, сценаристом и VFX-артистом. Сегодня объединяю весь этот опыт в одной профессии — AI-креатор, создавая визуал нового поколения."
+                imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <TeamCard
+                name="Полина Ландышева"
+                description="Фотограф с 2022 года. Прошла весь путь создания продающего визуала для товаров — от предметной съёмки с реальным реквизитом до полностью AI-сгенерированных сцен. Сегодня любой объект, фон или идея создаются с помощью точного промпта."
+                imageUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face"
+              />
+            </ScrollReveal>
           </div>
         </div>
       </section>
