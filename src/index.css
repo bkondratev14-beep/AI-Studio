@@ -15,7 +15,7 @@
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 32 95% 44%;
+    --primary: 24 100% 50%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 12%;
@@ -24,7 +24,7 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 32 95% 44%;
+    --accent: 24 100% 50%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,7 +32,7 @@
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 32 95% 44%;
+    --ring: 24 100% 50%;
 
     --radius: 0.5rem;
 
@@ -75,7 +75,7 @@
   }
 
   .glow-orange {
-    box-shadow: 0 0 40px -10px hsl(32 95% 44% / 0.4);
+    box-shadow: 0 0 40px -10px hsl(24 100% 50% / 0.4);
   }
 
   .card-hover {
@@ -84,7 +84,7 @@
 
   .card-hover:hover {
     @apply border-primary/30;
-    box-shadow: 0 0 30px -10px hsl(32 95% 44% / 0.2);
+    box-shadow: 0 0 30px -10px hsl(24 100% 50% / 0.2);
   }
 }
 
