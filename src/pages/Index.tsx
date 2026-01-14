@@ -4,6 +4,7 @@ import LiquidEther from '@/components/LiquidEther';
 import TeamCard from '@/components/TeamCard';
 import ToolsSection from '@/components/ToolsSection';
 import ScrollReveal from '@/components/ScrollReveal';
+import BlurText from '@/components/BlurText';
 import { useIsMobile } from '@/hooks/use-mobile';
 import davidPhoto from '@/assets/david-korolev.png';
 import polinaPhoto from '@/assets/polina-landysheva.jpg';
@@ -29,16 +30,27 @@ const Index = () => {
         </div>
         
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight opacity-0 animate-fade-in"
-            style={{ animationDelay: '0.2s' }}
-          >
-            Воплощаем любые идеи<br />в жизнь с помощью ИИ
-          </h1>
+          <div className="mb-8">
+            <BlurText
+              text="Воплощаем любые идеи"
+              delay={100}
+              animateBy="words"
+              direction="top"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+            />
+            <BlurText
+              text="в жизнь с помощью ИИ"
+              delay={100}
+              animateBy="words"
+              direction="top"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+              stepDuration={0.4}
+            />
+          </div>
           
           <div 
             className="opacity-0 animate-fade-in"
-            style={{ animationDelay: '0.5s' }}
+            style={{ animationDelay: '1.2s' }}
           >
             <Button variant="hero" asChild>
               <Link to="/order">Оставить заявку</Link>
