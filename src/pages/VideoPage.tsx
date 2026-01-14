@@ -19,17 +19,15 @@ const VideoPage = () => {
 
         {/* Main Showreel - Vertical */}
         <div className="max-w-md mx-auto mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border">
-            <img
-              src={verticalVideos[0]}
-              alt="Шоурил"
+          <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border relative">
+            <video
+              src="/videos/showreel.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center">
-                <div className="w-0 h-0 border-l-[20px] border-l-foreground border-y-[12px] border-y-transparent ml-1" />
-              </div>
-            </div>
           </div>
           <p className="text-center text-muted-foreground mt-4">Шоурил со всеми работами</p>
         </div>
