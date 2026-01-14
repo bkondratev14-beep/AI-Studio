@@ -18,9 +18,13 @@ const ToolsSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
-            <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
-              Инструменты
-            </h2>
+            <div className="flex items-center justify-center gap-4 mb-12">
+              <div className="w-8 md:w-12 h-0.5 bg-primary/60 rounded-full blur-[2px] shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
+              <h2 className="text-2xl md:text-3xl font-bold text-center">
+                Инструменты
+              </h2>
+              <div className="w-8 md:w-12 h-0.5 bg-primary/60 rounded-full blur-[2px] shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
+            </div>
           </ScrollReveal>
 
           <div className="space-y-10">
