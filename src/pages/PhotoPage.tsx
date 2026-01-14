@@ -6,19 +6,16 @@ import BlurText from '@/components/BlurText';
 const PhotoPage = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  // Arranged by color palette: light beige → pink/brown → dark red → warm festive
   const photos = [
-    'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1634017839464-5c339bbe3c06?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1633186223173-c5e0e8760c40?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1614849963640-9cc74b2a826f?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1618172193622-ae2d025f4032?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1614850715649-1d0106293bd1?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=600&h=800&fit=crop',
+    '/images/photo-1.jpg',  // Light beige levitating food
+    '/images/photo-2.jpg',  // Cream jar with candies
+    '/images/photo-3.jpg',  // Beige/pink product
+    '/images/photo-4.jpg',  // Brown chocolate truffles
+    '/images/photo-5.jpg',  // Dark red lipstick
+    '/images/photo-6.jpg',  // Pink/red tentacles lipstick
+    '/images/photo-7.jpg',  // Warm golden Christmas
+    '/images/photo-8.jpg',  // Red/green Christmas tree
   ];
 
   return (
