@@ -6,16 +6,24 @@ import BlurText from '@/components/BlurText';
 const PhotoPage = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Arranged by color palette: light beige → pink/brown → dark red → warm festive
+  // Arranged by color palette: cool/light → warm beige/gold → orange → dark brown
   const photos = [
-    '/images/photo-1.jpg',  // Light beige levitating food
-    '/images/photo-2.jpg',  // Cream jar with candies
-    '/images/photo-3.jpg',  // Beige/pink product
-    '/images/photo-4.jpg',  // Brown chocolate truffles
-    '/images/photo-5.jpg',  // Dark red lipstick
-    '/images/photo-6.jpg',  // Pink/red tentacles lipstick
-    '/images/photo-7.jpg',  // Warm golden Christmas
-    '/images/photo-8.jpg',  // Red/green Christmas tree
+    '/images/photo-9.jpg',   // Light blue bag with salad
+    '/images/photo-10.jpg',  // Black/white geometric bag
+    '/images/photo-11.jpg',  // White/teal bag in cafe
+    '/images/photo-1.jpg',   // Light beige levitating food
+    '/images/photo-2.jpg',   // Cream jar with candies
+    '/images/photo-3.jpg',   // Beige/pink product
+    '/images/photo-12.jpg',  // Gold highlighter compact
+    '/images/photo-13.jpg',  // Gold highlighter closeup
+    '/images/photo-14.jpg',  // Orange bag street photo
+    '/images/photo-5.jpg',   // Dark red lipstick
+    '/images/photo-6.jpg',   // Pink/red tentacles lipstick
+    '/images/photo-4.jpg',   // Brown chocolate truffles
+    '/images/photo-15.jpg',  // Dark chocolate boxes
+    '/images/photo-16.jpg',  // Brown boxes with ribbons
+    '/images/photo-7.jpg',   // Warm golden Christmas
+    '/images/photo-8.jpg',   // Red/green Christmas tree
   ];
 
   return (
