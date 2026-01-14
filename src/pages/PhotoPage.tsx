@@ -6,25 +6,34 @@ import BlurText from '@/components/BlurText';
 const PhotoPage = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Arranged by color palette: cool/light → warm beige/gold → orange → dark brown
+  // Photos with varying heights for masonry effect
   const photos = [
-    '/images/photo-9.jpg',   // Light blue bag with salad
-    '/images/photo-10.jpg',  // Black/white geometric bag
-    '/images/photo-11.jpg',  // White/teal bag in cafe
-    '/images/photo-1.jpg',   // Light beige levitating food
-    '/images/photo-2.jpg',   // Cream jar with candies
-    '/images/photo-3.jpg',   // Beige/pink product
-    '/images/photo-12.jpg',  // Gold highlighter compact
-    '/images/photo-13.jpg',  // Gold highlighter closeup
-    '/images/photo-14.jpg',  // Orange bag street photo
-    '/images/photo-5.jpg',   // Dark red lipstick
-    '/images/photo-6.jpg',   // Pink/red tentacles lipstick
-    '/images/photo-4.jpg',   // Brown chocolate truffles
-    '/images/photo-15.jpg',  // Dark chocolate boxes
-    '/images/photo-16.jpg',  // Brown boxes with ribbons
-    '/images/photo-7.jpg',   // Warm golden Christmas
-    '/images/photo-8.jpg',   // Red/green Christmas tree
+    { src: '/images/photo-9.jpg', size: 'tall' },    // Light blue bag with salad
+    { src: '/images/photo-10.jpg', size: 'tall' },   // Black/white geometric bag
+    { src: '/images/photo-11.jpg', size: 'medium' }, // White/teal bag in cafe
+    { src: '/images/photo-1.jpg', size: 'short' },   // Light beige levitating food
+    { src: '/images/photo-2.jpg', size: 'tall' },    // Cream jar with candies
+    { src: '/images/photo-3.jpg', size: 'medium' },  // Beige/pink product
+    { src: '/images/photo-12.jpg', size: 'tall' },   // Gold highlighter compact
+    { src: '/images/photo-13.jpg', size: 'short' },  // Gold highlighter closeup
+    { src: '/images/photo-14.jpg', size: 'tall' },   // Orange bag street photo
+    { src: '/images/photo-5.jpg', size: 'medium' },  // Dark red lipstick
+    { src: '/images/photo-6.jpg', size: 'tall' },    // Pink/red tentacles lipstick
+    { src: '/images/photo-4.jpg', size: 'short' },   // Brown chocolate truffles
+    { src: '/images/photo-15.jpg', size: 'tall' },   // Dark chocolate boxes
+    { src: '/images/photo-16.jpg', size: 'tall' },   // Brown boxes with ribbons
+    { src: '/images/photo-7.jpg', size: 'medium' },  // Warm golden Christmas
+    { src: '/images/photo-8.jpg', size: 'tall' },    // Red/green Christmas tree
   ];
+
+  const getSizeClass = (size: string) => {
+    switch (size) {
+      case 'tall': return 'aspect-[3/4]';
+      case 'medium': return 'aspect-square';
+      case 'short': return 'aspect-[4/3]';
+      default: return 'aspect-[3/4]';
+    }
+  };
 
   return (
     <main className="pt-24 pb-16">
@@ -37,17 +46,17 @@ const PhotoPage = () => {
           className="text-4xl md:text-5xl font-bold mb-16 text-center"
         />
 
-        {/* Photo Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+        {/* Masonry Photo Grid */}
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 space-y-3 md:space-y-4">
           {photos.map((photo, index) => (
             <div
               key={index}
-              className="aspect-[3/4] rounded-xl overflow-hidden bg-card cursor-pointer opacity-0 animate-fade-in group"
+              className={`${getSizeClass(photo.size)} rounded-xl overflow-hidden bg-card cursor-pointer opacity-0 animate-fade-in group break-inside-avoid`}
               style={{ animationDelay: `${0.1 + index * 0.05}s` }}
-              onClick={() => setSelectedImage(photo)}
+              onClick={() => setSelectedImage(photo.src)}
             >
               <img
-                src={photo}
+                src={photo.src}
                 alt={`AI Фото ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
