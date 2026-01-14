@@ -1,15 +1,16 @@
 import { ExternalLink } from 'lucide-react';
 import BlurText from '@/components/BlurText';
+import Masonry from '@/components/Masonry';
 
 const VideoPage = () => {
-  // Placeholder video URLs - replace with actual videos
-  const verticalVideos = [
-    'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=400&h=700&fit=crop',
-    'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&h=700&fit=crop',
-    'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=700&fit=crop',
+  const videos = [
+    { id: '1', video: '/videos/showreel.mp4', height: 800 },
+    { id: '2', img: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop', height: 400 },
+    { id: '3', img: 'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=400&h=700&fit=crop', height: 700 },
+    { id: '4', img: 'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&h=700&fit=crop', height: 700 },
+    { id: '5', img: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=700&fit=crop', height: 700 },
+    { id: '6', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop', height: 400 },
   ];
-
-  const horizontalVideo = 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1200&h=675&fit=crop';
 
   return (
     <main className="pt-24 pb-16">
@@ -19,54 +20,21 @@ const VideoPage = () => {
           delay={100}
           animateBy="words"
           direction="top"
-          className="text-4xl md:text-5xl font-bold mb-16 text-center"
+          className="text-4xl md:text-5xl font-bold mb-16 text-center justify-center"
         />
 
-        {/* Main Showreel - Vertical */}
-        <div className="max-w-md mx-auto mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border relative">
-            <video
-              src="/videos/showreel.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <p className="text-center text-muted-foreground mt-4">Шоурил со всеми работами</p>
-        </div>
-
-        {/* Horizontal Video */}
-        <div className="mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <div className="aspect-video rounded-2xl overflow-hidden bg-card border border-border">
-            <img
-              src={horizontalVideo}
-              alt="AI Видео работа"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Vertical Videos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {verticalVideos.map((video, index) => (
-            <div
-              key={index}
-              className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border opacity-0 animate-fade-in"
-              style={{ animationDelay: `${0.4 + index * 0.1}s` }}
-            >
-              <img
-                src={video}
-                alt={`AI Видео ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
+        <Masonry
+          items={videos}
+          ease="power3.out"
+          stagger={0.08}
+          animateFrom="bottom"
+          scaleOnHover={true}
+          hoverScale={0.97}
+          blurToFocus={true}
+        />
 
         {/* External Link */}
-        <div className="text-center opacity-0 animate-fade-in" style={{ animationDelay: '0.7s' }}>
+        <div className="text-center mt-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.7s' }}>
           <a
             href="https://disk.yandex.ru"
             target="_blank"
