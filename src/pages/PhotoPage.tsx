@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BlurText from '@/components/BlurText';
 
 const PhotoPage = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -21,9 +22,13 @@ const PhotoPage = () => {
   return (
     <main className="pt-24 pb-16">
       <div className="container mx-auto px-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-16 text-center opacity-0 animate-fade-in">
-          AI Фото
-        </h1>
+        <BlurText
+          text="AI Фото"
+          delay={100}
+          animateBy="words"
+          direction="top"
+          className="text-4xl md:text-5xl font-bold mb-16 text-center"
+        />
 
         {/* Photo Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
