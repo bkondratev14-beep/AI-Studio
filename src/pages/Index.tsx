@@ -58,13 +58,9 @@ const Index = () => {
       <section className="py-24 md:py-32 bg-background">
         <div className="container mx-auto px-6">
           <ScrollReveal>
-            <div className="flex items-center justify-center gap-4 mb-16">
-              <div className="w-8 md:w-12 h-0.5 bg-primary/60 rounded-full blur-[2px] shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
-              <h2 className="text-3xl md:text-4xl font-bold text-center">
-                Команда
-              </h2>
-              <div className="w-8 md:w-12 h-0.5 bg-primary/60 rounded-full blur-[2px] shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
+              Команда
+            </h2>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
