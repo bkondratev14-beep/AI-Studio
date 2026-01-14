@@ -28,7 +28,7 @@ const TeamCard = ({ name, description, imageUrl, imagePosition = 'center', insta
                 href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:drop-shadow-[0_0_8px_hsl(24_100%_50%/0.8)]"
                 aria-label={`Instagram ${name}`}
               >
                 <Instagram className="w-5 h-5" />
