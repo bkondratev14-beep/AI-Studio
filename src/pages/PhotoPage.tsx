@@ -12,16 +12,23 @@ const PhotoPage = () => {
   const photos = [
     { src: '/images/photo-9.jpg', size: 'tall' },    // Light blue bag with salad
     { src: '/images/photo-10.jpg', size: 'tall' },   // Black/white geometric bag
+    { src: '/images/photo-17.jpg', size: 'medium' }, // Bathroom brushes basket
     { src: '/images/photo-11.jpg', size: 'medium' }, // White/teal bag in cafe
     { src: '/images/photo-1.jpg', size: 'short' },   // Light beige levitating food
+    { src: '/images/photo-18.jpg', size: 'tall' },   // Woman with gold face roller
     { src: '/images/photo-2.jpg', size: 'tall' },    // Cream jar with candies
     { src: '/images/photo-3.jpg', size: 'medium' },  // Beige/pink product
+    { src: '/images/photo-19.png', size: 'tall' },   // Gold roller honey daisies
     { src: '/images/photo-12.jpg', size: 'tall' },   // Gold highlighter compact
     { src: '/images/photo-13.jpg', size: 'short' },  // Gold highlighter closeup
     { src: '/images/photo-14.jpg', size: 'tall' },   // Orange bag street photo
+    { src: '/images/photo-23.png', size: 'medium' }, // Lip gloss product
     { src: '/images/photo-5.jpg', size: 'medium' },  // Dark red lipstick
+    { src: '/images/photo-22.jpg', size: 'tall' },   // Lipstick with water drops
     { src: '/images/photo-6.jpg', size: 'tall' },    // Pink/red tentacles lipstick
+    { src: '/images/photo-21.jpg', size: 'medium' }, // Red candies in jar
     { src: '/images/photo-4.jpg', size: 'short' },   // Brown chocolate truffles
+    { src: '/images/photo-20.jpg', size: 'tall' },   // Flying candies golden bag
     { src: '/images/photo-15.jpg', size: 'tall' },   // Dark chocolate boxes
     { src: '/images/photo-16.jpg', size: 'tall' },   // Brown boxes with ribbons
     { src: '/images/photo-7.jpg', size: 'medium' },  // Warm golden Christmas
