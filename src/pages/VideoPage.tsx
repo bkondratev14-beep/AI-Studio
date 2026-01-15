@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import BlurText from '@/components/BlurText';
 import FloatingElements from '@/components/FloatingElements';
 import GridPattern from '@/components/GridPattern';
+import showreelPreview from '@/assets/showreel-preview.jpg';
 
 interface YouTubeVideo {
   id: string;
@@ -59,7 +60,7 @@ const VideoPage = () => {
             onClick={() => openVideo(showreel)}
           >
             <img
-              src={getYouTubeThumbnail(showreel.youtubeId)}
+              src={showreelPreview}
               alt="Showreel"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
