@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { ExternalLink, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import BlurText from '@/components/BlurText';
+import FloatingElements from '@/components/FloatingElements';
+import GridPattern from '@/components/GridPattern';
 
 const VideoPage = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
@@ -31,8 +33,12 @@ const VideoPage = () => {
   };
 
   return (
-    <main className="pt-24 pb-16">
-      <div className="container mx-auto px-6">
+    <main className="pt-24 pb-16 relative min-h-screen">
+      {/* Background Effects */}
+      <FloatingElements variant="circles" />
+      <GridPattern />
+
+      <div className="container mx-auto px-6 relative z-10">
         <BlurText
           text="AI Видео"
           delay={100}
