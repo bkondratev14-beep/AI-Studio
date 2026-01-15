@@ -186,7 +186,7 @@ const VideoPage = () => {
             >
               <div className={`${selectedVideo.isVertical ? 'aspect-[9/16]' : 'aspect-video'} rounded-2xl overflow-hidden bg-black`}>
                 <iframe
-                  src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0&modestbranding=1&controls=1`}
+                  src={`https://www.youtube-nocookie.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0&iv_load_policy=3&cc_load_policy=0&disablekb=0&fs=1&playsinline=1`}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
