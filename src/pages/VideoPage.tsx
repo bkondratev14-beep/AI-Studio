@@ -6,11 +6,13 @@ import FloatingElements from '@/components/FloatingElements';
 import GridPattern from '@/components/GridPattern';
 import showreelPreview from '@/assets/showreel-preview.jpg';
 import horizontalVideoPreview from '@/assets/horizontal-video-preview.jpg';
+import vertical6Preview from '@/assets/vertical-video-6-preview.jpg';
 
 interface YouTubeVideo {
   id: string;
   youtubeId: string;
   isVertical: boolean;
+  customPreview?: string;
 }
 
 const VideoPage = () => {
@@ -25,6 +27,7 @@ const VideoPage = () => {
     { id: 'vertical-3', youtubeId: '74Kotvy2UrQ', isVertical: true },
     { id: 'vertical-4', youtubeId: 'xoKONSElxXw', isVertical: true },
     { id: 'vertical-5', youtubeId: 'SooTOcW1QHM', isVertical: true },
+    { id: 'vertical-6', youtubeId: 'rYKRlCVxGIE', isVertical: true, customPreview: vertical6Preview },
   ];
 
   const getYouTubeThumbnail = (youtubeId: string) => {
@@ -105,7 +108,7 @@ const VideoPage = () => {
             >
               <div className="relative w-full h-full">
                 <img
-                  src={getYouTubeThumbnail(video.youtubeId)}
+                  src={video.customPreview || getYouTubeThumbnail(video.youtubeId)}
                   alt={`Video ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
