@@ -8,8 +8,9 @@ import { CheckCircle, Loader2 } from 'lucide-react';
 import BlurText from '@/components/BlurText';
 import RippleGrid from '@/components/RippleGrid';
 
-// API URL - configure in .env for production
-const API_URL = import.meta.env.VITE_API_URL || '';
+// Supabase Edge Function URL
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 const OrderPage = () => {
   const [formData, setFormData] = useState({
@@ -41,13 +42,20 @@ const OrderPage = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/api/send-telegram`, {
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/send-telegram`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify(formData),
       });
+
+      // Handle non-JSON responses gracefully
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Ошибка сервера. Попробуйте позже.');
+      }
 
       const data = await response.json();
 
