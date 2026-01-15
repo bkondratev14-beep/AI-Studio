@@ -22,7 +22,8 @@ const PhotoPage = () => {
     { src: '/images/photo-12.jpg', size: 'tall' },   // Gold highlighter compact
     { src: '/images/photo-13.jpg', size: 'short' },  // Gold highlighter closeup
     { src: '/images/photo-14.jpg', size: 'tall' },   // Orange bag street photo
-    { src: '/images/photo-23.png', size: 'medium' }, // Lip gloss product
+    { src: '/images/photo-23.png', size: 'medium' }, // Lip gloss product (white bg)
+    { src: '/images/photo-24.png', size: 'medium' }, // Lip cream product (orange bg)
     { src: '/images/photo-5.jpg', size: 'medium' },  // Dark red lipstick
     { src: '/images/photo-22.jpg', size: 'tall' },   // Lipstick with water drops
     { src: '/images/photo-6.jpg', size: 'tall' },    // Pink/red tentacles lipstick
