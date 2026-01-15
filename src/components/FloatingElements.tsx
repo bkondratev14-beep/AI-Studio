@@ -152,35 +152,6 @@ const FloatingElements = ({ variant = 'circles' }: FloatingElementsProps) => {
           }}
         />
       ))}
-      
-      {/* Gradient orbs */}
-      <motion.div
-        className="absolute w-64 h-64 rounded-full bg-primary/5 blur-3xl"
-        style={{ left: '10%', top: '20%' }}
-        animate={{
-          opacity: [0.3, 0.5, 0.3],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-      <motion.div
-        className="absolute w-48 h-48 rounded-full bg-primary/5 blur-3xl"
-        style={{ right: '10%', bottom: '30%' }}
-        animate={{
-          opacity: [0.2, 0.4, 0.2],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{
-          duration: 12,
-          delay: 3,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
     </div>
   );
 };
