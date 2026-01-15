@@ -5,6 +5,7 @@ import BlurText from '@/components/BlurText';
 import FloatingElements from '@/components/FloatingElements';
 import GridPattern from '@/components/GridPattern';
 import showreelPreview from '@/assets/showreel-preview.jpg';
+import horizontalVideoPreview from '@/assets/horizontal-video-preview.jpg';
 
 interface YouTubeVideo {
   id: string;
@@ -80,7 +81,7 @@ const VideoPage = () => {
           >
             <div className="relative w-full h-full">
               <img
-                src={getYouTubeThumbnail(horizontalVideo.youtubeId)}
+                src={horizontalVideoPreview}
                 alt="Horizontal Video"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
