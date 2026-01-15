@@ -1,35 +1,40 @@
 import { useState } from 'react';
-import { ExternalLink, X } from 'lucide-react';
+import { ExternalLink, X, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import BlurText from '@/components/BlurText';
 import FloatingElements from '@/components/FloatingElements';
 import GridPattern from '@/components/GridPattern';
 
+interface YouTubeVideo {
+  id: string;
+  youtubeId: string;
+  isVertical: boolean;
+}
+
 const VideoPage = () => {
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<YouTubeVideo | null>(null);
 
-  const verticalVideos = [
-    '/videos/vertical-1.mp4',
-    '/videos/vertical-2.mp4',
-    '/videos/vertical-3.mp4',
+  const showreel: YouTubeVideo = { id: 'showreel', youtubeId: 'sIjiMHkmKuQ', isVertical: true };
+  const horizontalVideo: YouTubeVideo = { id: 'horizontal', youtubeId: '8Lmf2qoExck', isVertical: false };
+  
+  const verticalVideos: YouTubeVideo[] = [
+    { id: 'vertical-1', youtubeId: 'BzpX1AQXcoI', isVertical: true },
+    { id: 'vertical-2', youtubeId: 'bRskbj0SdGo', isVertical: true },
+    { id: 'vertical-3', youtubeId: '74Kotvy2UrQ', isVertical: true },
+    { id: 'vertical-4', youtubeId: 'xoKONSElxXw', isVertical: true },
+    { id: 'vertical-5', youtubeId: 'SooTOcW1QHM', isVertical: true },
   ];
 
-  const allVideos = [
-    { src: '/videos/showreel.mp4', isVertical: true },
-    { src: '/videos/cyberpunk-ring.mp4', isVertical: false },
-    ...verticalVideos.map(src => ({ src, isVertical: true })),
-  ];
+  const getYouTubeThumbnail = (youtubeId: string) => {
+    return `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
+  };
 
-  const openVideo = (src: string) => {
-    setSelectedVideo(src);
+  const openVideo = (video: YouTubeVideo) => {
+    setSelectedVideo(video);
   };
 
   const closeVideo = () => {
     setSelectedVideo(null);
-  };
-
-  const getVideoOrientation = (src: string) => {
-    return allVideos.find(v => v.src === src)?.isVertical ?? true;
   };
 
   return (
@@ -51,19 +56,16 @@ const VideoPage = () => {
         <div className="max-w-md mx-auto mb-12 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div 
             className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border relative cursor-pointer group"
-            onClick={() => openVideo('/videos/showreel.mp4')}
+            onClick={() => openVideo(showreel)}
           >
-            <video
-              src="/videos/showreel.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
+            <img
+              src={getYouTubeThumbnail(showreel.youtubeId)}
+              alt="Showreel"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Play className="w-7 h-7 text-white ml-1" fill="white" />
               </div>
             </div>
           </div>
@@ -73,20 +75,17 @@ const VideoPage = () => {
         <div className="mb-16 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <div 
             className="aspect-video rounded-2xl overflow-hidden bg-card border border-border cursor-pointer group"
-            onClick={() => openVideo('/videos/cyberpunk-ring.mp4')}
+            onClick={() => openVideo(horizontalVideo)}
           >
             <div className="relative w-full h-full">
-              <video
-                src="/videos/cyberpunk-ring.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
+              <img
+                src={getYouTubeThumbnail(horizontalVideo.youtubeId)}
+                alt="Horizontal Video"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-0 h-0 border-l-[24px] border-l-white border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent ml-1" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Play className="w-9 h-9 text-white ml-1" fill="white" />
                 </div>
               </div>
             </div>
@@ -94,26 +93,23 @@ const VideoPage = () => {
         </div>
 
         {/* Vertical Videos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mb-16">
           {verticalVideos.map((video, index) => (
             <div
-              key={index}
+              key={video.id}
               className="aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border opacity-0 animate-fade-in cursor-pointer group"
               style={{ animationDelay: `${0.4 + index * 0.1}s` }}
               onClick={() => openVideo(video)}
             >
               <div className="relative w-full h-full">
-                <video
-                  src={video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <img
+                  src={getYouTubeThumbnail(video.youtubeId)}
+                  alt={`Video ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Play className="w-5 h-5 md:w-7 md:h-7 text-white ml-0.5" fill="white" />
                   </div>
                 </div>
               </div>
@@ -156,7 +152,7 @@ const VideoPage = () => {
         </div>
       </div>
 
-      {/* Video Lightbox */}
+      {/* Video Lightbox with YouTube Embed */}
       <AnimatePresence>
         {selectedVideo && (
           <motion.div
@@ -174,26 +170,22 @@ const VideoPage = () => {
               <X className="w-6 h-6 text-white" />
             </button>
 
-            {/* Video Container */}
+            {/* YouTube Embed Container */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className={`${getVideoOrientation(selectedVideo) ? 'max-w-md w-full' : 'max-w-5xl w-full'}`}
+              className={`${selectedVideo.isVertical ? 'max-w-md w-full' : 'max-w-5xl w-full'}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className={`${getVideoOrientation(selectedVideo) ? 'aspect-[9/16]' : 'aspect-video'} rounded-2xl overflow-hidden bg-black`}>
-                <video
-                  key={selectedVideo}
-                  src={selectedVideo}
-                  autoPlay
-                  controls
-                  playsInline
-                  controlsList="nodownload nofullscreen noremoteplayback"
-                  disablePictureInPicture
-                  onContextMenu={(e) => e.preventDefault()}
-                  className="w-full h-full object-contain"
+              <div className={`${selectedVideo.isVertical ? 'aspect-[9/16]' : 'aspect-video'} rounded-2xl overflow-hidden bg-black`}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0&modestbranding=1&controls=1`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
                 />
               </div>
             </motion.div>
