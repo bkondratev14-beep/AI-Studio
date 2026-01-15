@@ -4,9 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Loader2 } from 'lucide-react';
 import BlurText from '@/components/BlurText';
 import RippleGrid from '@/components/RippleGrid';
+
+// API URL - configure in .env for production
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 const OrderPage = () => {
   const [formData, setFormData] = useState({
@@ -16,21 +19,49 @@ const OrderPage = () => {
     captcha: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    // Captcha validation
+    // Client-side captcha validation
     if (formData.captcha !== '16') {
       setError('Неверный ответ на капчу');
       return;
     }
 
-    // Here you would send to Telegram bot
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+    // Validate fields
+    if (!formData.name.trim() || !formData.contact.trim() || !formData.description.trim()) {
+      setError('Пожалуйста, заполните все поля');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(`${API_URL}/api/send-telegram`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Ошибка отправки');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Submit error:', err);
+      setError(err instanceof Error ? err.message : 'Произошла ошибка. Попробуйте позже.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -198,8 +229,20 @@ const OrderPage = () => {
             animate="visible"
             custom={4}
           >
-            <Button type="submit" variant="hero" className="w-full text-sm md:text-base py-5 md:py-6">
-              Отправить заявку
+            <Button 
+              type="submit" 
+              variant="hero" 
+              className="w-full text-sm md:text-base py-5 md:py-6"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Отправка...
+                </>
+              ) : (
+                'Отправить заявку'
+              )}
             </Button>
           </motion.div>
         </form>

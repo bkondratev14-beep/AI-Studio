@@ -60,6 +60,70 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Telegram Bot Integration
+
+### Setup
+
+1. Create a Telegram bot via [@BotFather](https://t.me/BotFather)
+2. Get your chat ID via [@userinfobot](https://t.me/userinfobot)
+3. Copy `.env.example` to `.env` and fill in the values
+
+### Deployment Options
+
+#### Option 1: Vercel (Recommended)
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Set environment variables in Vercel dashboard:
+# - TELEGRAM_BOT_TOKEN
+# - TELEGRAM_CHAT_ID
+# - ALLOWED_ORIGIN (optional)
+```
+
+#### Option 2: Netlify
+
+```bash
+# Install Netlify CLI
+npm i -g netlify-cli
+
+# Deploy
+netlify deploy --prod
+
+# Set environment variables in Netlify dashboard
+```
+
+#### Option 3: Self-hosted Express Server
+
+```bash
+# Navigate to server folder
+cd server
+
+# Install dependencies
+npm install
+
+# Build
+npm run build
+
+# Start server
+npm start
+
+# Or use PM2 for production
+pm2 start dist/index.js --name telegram-bot
+```
+
+### Frontend Configuration
+
+Set `VITE_API_URL` in your `.env` file to point to your deployed API:
+
+```bash
+VITE_API_URL=https://your-api-url.vercel.app
+```
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
