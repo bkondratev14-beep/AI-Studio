@@ -8,33 +8,40 @@ import showreelPreview from '@/assets/showreel-preview.jpg';
 import horizontalVideoPreview from '@/assets/horizontal-video-preview.jpg';
 import vertical6Preview from '@/assets/vertical-video-6-preview.jpg';
 
-interface YouTubeVideo {
+interface LocalVideo {
   id: string;
-  youtubeId: string;
+  videoSrc: string;
+  previewSrc: string;
   isVertical: boolean;
-  customPreview?: string;
 }
 
 const VideoPage = () => {
-  const [selectedVideo, setSelectedVideo] = useState<YouTubeVideo | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<LocalVideo | null>(null);
 
-  const showreel: YouTubeVideo = { id: 'showreel', youtubeId: 'sIjiMHkmKuQ', isVertical: true };
-  const horizontalVideo: YouTubeVideo = { id: 'horizontal', youtubeId: '8Lmf2qoExck', isVertical: false };
+  const showreel: LocalVideo = { 
+    id: 'showreel', 
+    videoSrc: '/videos/showreel.mp4',
+    previewSrc: showreelPreview,
+    isVertical: true 
+  };
   
-  const verticalVideos: YouTubeVideo[] = [
-    { id: 'vertical-1', youtubeId: 'BzpX1AQXcoI', isVertical: true },
-    { id: 'vertical-2', youtubeId: 'bRskbj0SdGo', isVertical: true },
-    { id: 'vertical-3', youtubeId: '74Kotvy2UrQ', isVertical: true },
-    { id: 'vertical-4', youtubeId: 'xoKONSElxXw', isVertical: true },
-    { id: 'vertical-5', youtubeId: 'SooTOcW1QHM', isVertical: true },
-    { id: 'vertical-6', youtubeId: 'rYKRlCVxGIE', isVertical: true, customPreview: vertical6Preview },
+  const horizontalVideo: LocalVideo = { 
+    id: 'horizontal', 
+    videoSrc: '/videos/horizontal.mp4',
+    previewSrc: horizontalVideoPreview,
+    isVertical: false 
+  };
+  
+  const verticalVideos: LocalVideo[] = [
+    { id: 'vertical-1', videoSrc: '/videos/vertical-1.mp4', previewSrc: '/images/photo-1.jpg', isVertical: true },
+    { id: 'vertical-2', videoSrc: '/videos/vertical-2.mp4', previewSrc: '/images/photo-2.jpg', isVertical: true },
+    { id: 'vertical-3', videoSrc: '/videos/vertical-3.mp4', previewSrc: '/images/photo-3.jpg', isVertical: true },
+    { id: 'vertical-4', videoSrc: '/videos/vertical-4.mp4', previewSrc: '/images/photo-4.jpg', isVertical: true },
+    { id: 'vertical-5', videoSrc: '/videos/vertical-5.mp4', previewSrc: '/images/photo-5.jpg', isVertical: true },
+    { id: 'vertical-6', videoSrc: '/videos/vertical-6.mp4', previewSrc: vertical6Preview, isVertical: true },
   ];
 
-  const getYouTubeThumbnail = (youtubeId: string) => {
-    return `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
-  };
-
-  const openVideo = (video: YouTubeVideo) => {
+  const openVideo = (video: LocalVideo) => {
     setSelectedVideo(video);
   };
 
@@ -64,7 +71,7 @@ const VideoPage = () => {
             onClick={() => openVideo(showreel)}
           >
             <img
-              src={showreelPreview}
+              src={showreel.previewSrc}
               alt="Showreel"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -84,7 +91,7 @@ const VideoPage = () => {
           >
             <div className="relative w-full h-full">
               <img
-                src={horizontalVideoPreview}
+                src={horizontalVideo.previewSrc}
                 alt="Horizontal Video"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -108,7 +115,7 @@ const VideoPage = () => {
             >
               <div className="relative w-full h-full">
                 <img
-                  src={video.customPreview || getYouTubeThumbnail(video.youtubeId)}
+                  src={video.previewSrc}
                   alt={`Video ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -157,7 +164,7 @@ const VideoPage = () => {
         </div>
       </div>
 
-      {/* Video Lightbox with YouTube Embed */}
+      {/* Video Lightbox with Local Video Player */}
       <AnimatePresence>
         {selectedVideo && (
           <motion.div
@@ -175,7 +182,7 @@ const VideoPage = () => {
               <X className="w-6 h-6 text-white" />
             </button>
 
-            {/* YouTube Embed Container */}
+            {/* Local Video Player Container */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -185,12 +192,14 @@ const VideoPage = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className={`${selectedVideo.isVertical ? 'aspect-[9/16]' : 'aspect-video'} rounded-2xl overflow-hidden bg-black`}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0&modestbranding=1&controls=1`}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
+                <video
+                  src={selectedVideo.videoSrc}
+                  autoPlay
+                  controls
+                  playsInline
+                  controlsList="nodownload"
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="w-full h-full object-contain"
                 />
               </div>
             </motion.div>
