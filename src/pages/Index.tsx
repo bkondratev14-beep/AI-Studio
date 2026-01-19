@@ -69,9 +69,11 @@ const Index = () => {
           aria-label="Прокрутить вниз"
         >
           {/* Mobile: larger touch target with text */}
-          <span className="text-xs md:text-[10px] tracking-[0.2em] text-muted-foreground/70 group-hover:text-foreground transition-colors uppercase">
-            {isMobile ? 'НИЖЕ' : ''}
-          </span>
+          {isMobile && (
+            <span className="text-[10px] tracking-[0.3em] text-muted-foreground/70 group-hover:text-foreground transition-colors uppercase">
+              СКРОЛЛ
+            </span>
+          )}
           <div className={`${isMobile ? 'w-12 h-12' : 'w-6 h-10'} rounded-full border-2 border-muted-foreground/30 group-hover:border-primary/50 flex justify-center items-center transition-colors`}>
             <svg 
               className={`${isMobile ? 'w-5 h-5' : 'w-3 h-3'} text-muted-foreground/50 group-hover:text-primary animate-bounce`}
