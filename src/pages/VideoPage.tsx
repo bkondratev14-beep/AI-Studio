@@ -6,6 +6,10 @@ import FloatingElements from '@/components/FloatingElements';
 import GridPattern from '@/components/GridPattern';
 import showreelPreview from '@/assets/showreel-preview.jpg';
 import horizontalVideoPreview from '@/assets/horizontal-video-preview.jpg';
+import vertical2Preview from '@/assets/vertical-2-preview.jpg';
+import vertical3Preview from '@/assets/vertical-3-preview.jpg';
+import vertical4Preview from '@/assets/vertical-4-preview.jpg';
+import vertical5Preview from '@/assets/vertical-5-preview.jpg';
 import vertical6Preview from '@/assets/vertical-video-6-preview.jpg';
 
 interface LocalVideo {
@@ -34,10 +38,10 @@ const VideoPage = () => {
   
   const verticalVideos: LocalVideo[] = [
     { id: 'vertical-1', videoSrc: '/videos/vertical-1.mp4', previewSrc: '/images/photo-1.jpg', isVertical: true },
-    { id: 'vertical-2', videoSrc: '/videos/vertical-2.mp4', previewSrc: '/images/photo-2.jpg', isVertical: true },
-    { id: 'vertical-3', videoSrc: '/videos/vertical-3.mp4', previewSrc: '/images/photo-3.jpg', isVertical: true },
-    { id: 'vertical-4', videoSrc: '/videos/vertical-4.mp4', previewSrc: '/images/photo-4.jpg', isVertical: true },
-    { id: 'vertical-5', videoSrc: '/videos/vertical-5.mp4', previewSrc: '/images/photo-5.jpg', isVertical: true },
+    { id: 'vertical-2', videoSrc: '/videos/vertical-2.mp4', previewSrc: vertical2Preview, isVertical: true },
+    { id: 'vertical-3', videoSrc: '/videos/vertical-3.mp4', previewSrc: vertical3Preview, isVertical: true },
+    { id: 'vertical-4', videoSrc: '/videos/vertical-4.mp4', previewSrc: vertical4Preview, isVertical: true },
+    { id: 'vertical-5', videoSrc: '/videos/vertical-5.mp4', previewSrc: vertical5Preview, isVertical: true },
     { id: 'vertical-6', videoSrc: '/videos/vertical-6.mp4', previewSrc: vertical6Preview, isVertical: true },
   ];
 
