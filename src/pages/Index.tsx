@@ -64,14 +64,14 @@ const Index = () => {
             const teamSection = document.querySelector('section:nth-of-type(2)');
             teamSection?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in flex flex-col items-center gap-2 group cursor-pointer"
+          className="absolute bottom-8 left-0 right-0 mx-auto w-fit opacity-0 animate-fade-in flex flex-col items-center gap-2 group cursor-pointer"
           style={{ animationDelay: '1s' }}
           aria-label="Прокрутить вниз"
         >
           {/* Mobile: larger touch target with text */}
           {isMobile && (
-            <span className="text-[10px] tracking-[0.3em] text-muted-foreground/70 group-hover:text-foreground transition-colors uppercase">
-              СКРОЛЛ
+            <span className="text-[10px] tracking-[0.15em] text-muted-foreground/70 group-hover:text-foreground transition-colors uppercase text-center">
+              СВАЙП
             </span>
           )}
           <div className={`${isMobile ? 'w-12 h-12' : 'w-6 h-10'} rounded-full border-2 border-muted-foreground/30 group-hover:border-primary/50 flex justify-center items-center transition-colors`}>
